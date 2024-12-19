@@ -43,15 +43,16 @@ Typeface.WeightNum = {
 function Typeface:RequestFile(URL)
 	local Response = request{Url = URL, Method = "GET"}
 
-	assert(Response.StatusCode ~= 200, "[ Typeface Registration ] Content Error! : { Response.StatusCode }")
+	assert(Response.StatusCode == 200, `[ Typeface Registration ] Content Error! : { Response.StatusCode }`)
 
     return Response.Body
 end
 
-function Typeface:WriteFace(Directory, File)
-    File = Http:JSONEncode({ name = Name, faces = { Data } })
+function Typeface:Writeface(Directory, File)
+    File = Http:JSONEncode(File)
 
-    write(Directory, File)
+
+    writefile(Directory, File)
 end
 
 function Typeface:Register(Path, Asset)
@@ -112,6 +113,7 @@ function Typeface:Register(Path, Asset)
 			assetId = getcustomasset(`{ Directory }\\{ Name }.font`)
 		}
 
+        print(Data)
 		Typeface:Writeface(`{ Directory }\\{ Asset.name }Families.json`, { name = Name, faces = { Data } })
         warn(`[ Typeface Registration ] Registering { Asset.name } Typeface to "{ Path }"...`)
 	end
