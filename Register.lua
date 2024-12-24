@@ -113,7 +113,6 @@ function Typeface:Register(Path, Asset)
 			assetId = getcustomasset(`{ Directory }\\{ Name }.font`)
 		}
 
-        print(Data)
 		Typeface:Writeface(`{ Directory }\\{ Asset.name }Families.json`, { name = Name, faces = { Data } })
         warn(`[ Typeface Registration ] Registering { Asset.name } Typeface to "{ Path }"...`)
 	end
