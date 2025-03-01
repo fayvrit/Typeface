@@ -19,7 +19,6 @@ local BoldFont = Face:Register{
     weight = "Bold",
 }
 
-BoldFont:Get()
-
-Typeface:Get('Verdana-Bold')
+-- BoldFont:Get()
+-- Typeface:Get('Verdana-Bold')
 ```
