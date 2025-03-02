@@ -1,7 +1,6 @@
-# Typeface-Registration
+# Example
 Roblox Custom Typeface Registration
 
-### Example
 ```lua
 local Typeface = loadstring( game:HttpGet "https://github.com/fayvrit/Typeface/raw/refs/heads/main/Register.lua" )()
 local Path = "Typefaces"
