@@ -46,8 +46,8 @@ function Library:Register(Info)
     Info.enumweight = Library.Throw(Enum.FontWeight[Info.weight], `Couldn't find enum weight for "{Info.weight}"!`)
     Info.numweight = Library.Throw(Info.enumweight.Value, `Couldn't find numerical weight for "{Info.weight}"!`)
 
-    Info.fullname = `{ Info.numweight ~= '400' and '-' .. Info.weight or '' }{ Info.style ~= 'Normal' and '-' .. Info.style or '' }`
-    Info.fontpath = `{ Info.path }\\{ Info.name }-{ Info.fullname }.font`
+    Info.fullname = `-{ Info.numweight ~= '400' and '-' .. Info.weight or '' }{ Info.style ~= 'Normal' and '-' .. Info.style or '' }`
+    Info.fontpath = `{ Info.path }\\{ Info.name }{ Info.fullname }.font`
     Info.familypath = `{ Info.path }\\Families`
 
     Info.family = self.family
@@ -101,8 +101,11 @@ function Library:CreateFamily()
         faces = { }
     }
 
+    Info.fullname = string.split(Info.fullname, '-')
+    Info.fullname = `{ Info.fullname[2] }{ Info.fullname[3] and ' ' .. Info.fullname[3] or '' }`
+
     table.insert(Info.family.faces, {
-        name = string.gsub(Info.fullname, '-', ' '),
+        name = Info.fullname,
         weight = Info.numweight,
         style = Info.style,
         assetId = Info.fontpath,
