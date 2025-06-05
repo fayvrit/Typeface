@@ -37,7 +37,7 @@ function Library:Register(Info)
     Info = setmetatable(Info or { }, Library)
 
     Info.url = Library.Throw(Info.url, 'Url is missing!')
-    Info.name = Library.Throw(Info.name, 'Name is missing!')
+    Info.name = Library.Throw(Info.name or self.name, 'Name is missing!')
 
     Info.weight = Info.weight or 'Regular'
     Info.style = Info.style or 'Normal'
