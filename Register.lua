@@ -67,7 +67,7 @@ end
 function Library:Get(Name)
     local face = Library.Fonts[Name] or self
 
-    return Font.new(face.font, face.enumweight)
+    return Font.new(face.fontpath, face.enumweight)
 end
 
 function Library:CheckPath(Path)
