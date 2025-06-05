@@ -67,7 +67,7 @@ end
 function Library:Get(Name)
     local face = Library.Fonts[Name] or self
 
-    return Font.new(face.fontpath, face.enumweight)
+    return Font.new(Info.fontpath, face.enumweight)
 end
 
 function Library:CheckPath(Path)
@@ -89,6 +89,8 @@ function Library:CreateFont()
     warn(`Successfully fetched "{Info.name .. Info.weight .. Info.style}" file!`)
 
     writefile(Info.fontpath, Result)
+
+    Info.fontpath = getcustomasset(Info.fontpath)
 end
 
 function Library:CreateFamily()
@@ -103,7 +105,7 @@ function Library:CreateFamily()
         name = string.gsub(Info.fullname, '-', ' '),
         weight = Info.numweight,
         style = Info.style,
-        assetId = getcustomasset(Info.fontpath),
+        assetId = Info.fontpath,
     })
 
     writefile(`{ Info.familypath }\\{ Info.name }.json`, Http:JSONEncode(Info.family))
