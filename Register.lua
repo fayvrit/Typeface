@@ -49,8 +49,9 @@ function Library:Register(Info)
 
     Info.fullname = `{ Info.numweight ~= '400' and '-' .. Info.weight or '' }{ Info.style ~= 'Normal' and '-' .. Info.style or '' }`
     Info.fontpath = `{ Info.path }\\{ Info.name }{ Info.fullname }.font`
-    Info.jsonpath = `{ Info.familypath }\\{ Info.name }.json`
     Info.familypath = `{ Info.path }\\Families`
+
+    Info.jsonpath = `{ Info.familypath }\\{ Info.name }.json`
 
     Info.family = self.family
 
