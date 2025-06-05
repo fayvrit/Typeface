@@ -73,7 +73,7 @@ end
 function Library:CheckPath(Path)
     if isfolder(Path) then return end
 
-    makefoler(Path)
+    makefolder(Path)
 end
 
 function Library:CreateFont()
