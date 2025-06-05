@@ -77,7 +77,7 @@ function Library:CheckPath(Path)
 end
 
 function Library:CreateFont()
-    local Info = Library.Throw(self.Info, 'Information is missing!')
+    local Info = Library.Throw(self, 'Information is missing!')
 
     if isfile(Info.fontpath) then return end
 
@@ -94,7 +94,7 @@ function Library:CreateFont()
 end
 
 function Library:CreateFamily()
-    local Info = Library.Throw(self.Info, 'Information is missing!')
+    local Info = Library.Throw(self, 'Information is missing!')
 
     Info.family = Info.family or {
         name = Info.name,
