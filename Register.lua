@@ -108,7 +108,7 @@ function Library:CreateFamily()
     table.insert(Info.family.faces, {
         name = Info.fullname,
         weight = Info.numweight,
-        style = Info.style,
+        style = string.lower(Info.style),
         assetId = getcustomasset(Info.fontpath),
     })
 
