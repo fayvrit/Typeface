@@ -89,8 +89,6 @@ function Library:CreateFont()
     warn(`Successfully fetched "{Info.name .. Info.weight .. Info.style}" file!`)
 
     writefile(Info.fontpath, Result)
-
-    Info.fontpath = getcustomasset(Info.fontpath)
 end
 
 function Library:CreateFamily()
@@ -108,7 +106,7 @@ function Library:CreateFamily()
         name = Info.fullname,
         weight = Info.numweight,
         style = Info.style,
-        assetId = Info.fontpath,
+        assetId = getcustomasset(Info.fontpath),
     })
 
     writefile(`{ Info.familypath }\\{ Info.name }.json`, Http:JSONEncode(Info.family))
