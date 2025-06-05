@@ -20,6 +20,7 @@ local BoldFont = Face:Register{
     weight = "Bold",
 }
 
--- BoldFont:Get()
--- Typeface:Get('Verdana-Bold')
+local TextInstance = Instance.new 'TextLabel'
+TextInstance.FontFace = BoldFont -- or BoldFont:Get() or Typeface:Get('Verdana-Bold')
+
 ```
