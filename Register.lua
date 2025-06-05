@@ -48,7 +48,7 @@ function Library:Register(Info)
     Info.enumstyle = Library.Throw(Enum.FontStyle[Info.style], `Couldn't find enum style for "{Info.style}"!`)
 
     Info.fullname = `{ Info.numweight ~= '400' and '-' .. Info.weight or '' }{ Info.style ~= 'Normal' and '-' .. Info.style or '' }`
-    Info.fontpath = `{ Info.path }\\{ Info.name }{ Info.fullname }.font`
+    Info.fontpath = `{ Info.path }\\{ Info.name }{ Info.fullname }.ttf`
     Info.familypath = `{ Info.path }\\Families`
 
     Info.jsonpath = `{ Info.familypath }\\{ Info.name }.json`
