@@ -89,8 +89,6 @@ function Library:CreateFont()
     warn(`Successfully fetched "{Info.name .. Info.weight .. Info.style}" file!`)
 
     writefile(Info.fontpath, Result)
-
-    Info.fontpath = getcustomasset(Info.fontpath)
 end
 
 function Library:CreateFamily()
