@@ -15,7 +15,7 @@ end
     getcustomasset          = Library.Throw(getcustomasset, 'Executor is incompatible!')
 end
 
--- // Metatables 
+-- // Metamethods
 Library.__index = Library
 
 -- // Services
