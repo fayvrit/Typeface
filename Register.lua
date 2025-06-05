@@ -16,15 +16,7 @@ end
 end
 
 -- // Metatables 
-Library.__index = function(self, key)
-    local lowerkey = string.lower(key)
-
-    return 
-        rawget(self, lowerkey) or 
-        rawget(self, key) or 
-        rawget(Library, lowerkey) or 
-        rawget(Library, key)
-end
+Library.__index = Library
 
 -- // Services
 local Http = cloneref(game:GetService 'HttpService')
