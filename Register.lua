@@ -45,6 +45,7 @@ function Library:Register(Info)
     Info.path = Library.Throw(Info.path or Library.Path, 'Path is missing!')
     Info.enumweight = Library.Throw(Enum.FontWeight[Info.weight], `Couldn't find enum weight for "{Info.weight}"!`)
     Info.numweight = Library.Throw(Info.enumweight.Value, `Couldn't find numerical weight for "{Info.weight}"!`)
+    Info.enumstyle = Library.Throw(Enum.FontStyle[Info.style], `Couldn't find enum style for "{Info.style}"!`)
 
     Info.fullname = `{ Info.numweight ~= '400' and '-' .. Info.weight or '' }{ Info.style ~= 'Normal' and '-' .. Info.style or '' }`
     Info.fontpath = `{ Info.path }\\{ Info.name }{ Info.fullname }.font`
@@ -67,7 +68,7 @@ end
 function Library:Get(Name)
     local face = Library.Fonts[Name] or self
 
-    return Font.new(getcustomasset(face.fontpath), face.enumweight)
+    return Font.new(getcustomasset(face.fontpath), face.enumweight, face.enumstyle)
 end
 
 function Library:CheckPath(Path)
@@ -85,8 +86,8 @@ function Library:CreateFont()
         return game:HttpGet(Info.url)
     end)
 
-    Library.Throw(Success, `Failed to fetch "{Info.name .. Info.weight .. Info.style}" file!`)
-    warn(`Successfully fetched "{Info.name .. Info.weight .. Info.style}" file!`)
+    Library.Throw(Success, `Failed to fetch "{ Info.name }-{ Info.weight }-{ Info.style }" file!`)
+    warn(`Successfully fetched "{ Info.name }-{ Info.weight }-{ Info.style }" file!`)
 
     writefile(Info.fontpath, Result)
 end
