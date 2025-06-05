@@ -36,7 +36,7 @@ Library.Fonts = { }
 function Library:Register(Info)
     Info = setmetatable(Info or { }, Library)
 
-    Info.url = Library.Throw(Info.link, 'Link is missing!')
+    Info.url = Library.Throw(Info.url, 'Url is missing!')
     Info.name = Library.Throw(Info.name, 'Name is missing!')
     Info.id = Library.Throw(Info.id, 'ID is missing!')
 
