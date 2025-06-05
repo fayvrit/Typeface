@@ -49,6 +49,7 @@ function Library:Register(Info)
 
     Info.fullname = `{ Info.numweight ~= '400' and '-' .. Info.weight or '' }{ Info.style ~= 'Normal' and '-' .. Info.style or '' }`
     Info.fontpath = `{ Info.path }\\{ Info.name }{ Info.fullname }.font`
+    Info.jsonpath = `{ Info.familypath }\\{ Info.name }.json`
     Info.familypath = `{ Info.path }\\Families`
 
     Info.family = self.family
@@ -68,7 +69,7 @@ end
 function Library:Get(Name)
     local face = Library.Fonts[Name] or self
 
-    return Font.new(getcustomasset(face.fontpath), face.enumweight, face.enumstyle)
+    return Font.new(getcustomasset(face.jsonpath), face.enumweight, face.enumstyle)
 end
 
 function Library:CheckPath(Path)
@@ -110,7 +111,7 @@ function Library:CreateFamily()
         assetId = getcustomasset(Info.fontpath),
     })
 
-    writefile(`{ Info.familypath }\\{ Info.name }.json`, Http:JSONEncode(Info.family))
+    writefile(Info.jsonpath, Http:JSONEncode(Info.family))
 end
 
 return Library
