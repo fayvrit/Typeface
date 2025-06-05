@@ -47,7 +47,7 @@ function Library:Register(Info)
     Info.numweight = Library.Throw(Info.enumweight.Value, `Couldn't find numerical weight for "{Info.weight}"!`)
 
     Info.fullname = `{ Info.numweight ~= '400' and '-' .. Info.weight or '' }{ Info.style ~= 'Normal' and '-' .. Info.style or '' }`
-    Info.fontpath = `{ Info.path }\\{ Info.fullname }.font`
+    Info.fontpath = `{ Info.path }\\{ Info.name }-{ Info.fullname }.font`
     Info.familypath = `{ Info.path }\\Families`
 
     Info.family = self.family
@@ -58,7 +58,7 @@ function Library:Register(Info)
     Info:CreateFont()
     Info:CreateFamily()
 
-    Library.Fonts[Info.fullname] = Info
+    Library.Fonts[Info.name .. Info.fullname] = Info
     Library.Path = Info.path
 
     return Info:Get(), Info
