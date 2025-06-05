@@ -38,7 +38,6 @@ function Library:Register(Info)
 
     Info.url = Library.Throw(Info.url, 'Url is missing!')
     Info.name = Library.Throw(Info.name, 'Name is missing!')
-    Info.id = Library.Throw(Info.id, 'ID is missing!')
 
     Info.weight = Info.weight or 'Regular'
     Info.style = Info.style or 'Normal'
