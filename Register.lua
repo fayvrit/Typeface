@@ -101,12 +101,12 @@ function Library:CreateFamily()
         faces = { }
     }
 
-    table.insert({
+    table.insert(Info.family.faces, {
         name = string.gsub(Info.fullname, '-', ' '),
         weight = Info.numweight,
         style = Info.style,
         assetId = getcustomasset(Info.fontpath),
-    }, Info.family.faces)
+    })
 
     writefile(`{ Info.familypath }\\{ Info.name }.json`, Http:JSONEncode(Info.family))
 end
