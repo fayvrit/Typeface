@@ -60,9 +60,9 @@ function Library:Register(Info)
 end
 
 function Library:Get(Name)
-    local face = Library.Fonts[Name] or self
+    local face = #Library.Fonts > 0 and Library.Fonts[Name] or self
 
-    return Font.new(getcustomasset(face.jsonpath), face.enumweight, face.enumstyle)
+    return Font.new(getcustomasset(`{ Info.familypath }\\{ Name }.json`), face.enumweight, face.enumstyle)
 end
 
 function Library:CheckPath(Path)
