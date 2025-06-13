@@ -62,7 +62,7 @@ end
 function Library:Get(Name)
     local face = Library.Fonts[Name] or self
 
-    return Font.new(getcustomasset(face.familypath), face.enumweight, face.enumstyle)
+    return Font.new(getcustomasset(face.jsonpath), face.enumweight, face.enumstyle)
 end
 
 function Library:CheckPath(Path)
